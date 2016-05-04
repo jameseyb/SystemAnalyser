@@ -25,8 +25,10 @@ searchPath = "C:\\Drop_Zone\\Projects\\SystemAnalyser"
 try:
 	for path, dirs, files in os.walk(searchPath, topdown=True):
 		for files in os.walk(path, topdown=True):
-			str(searchRes) = re.search(r'citrix', files)
+			str(searchRes) = re.search(r'citrix', files, re.M|re.I)
 			if searchRes:
 				print(searchRes)
+			else:
+				print("No matches found")
 except WindowsError as e:
 	print("Error")
