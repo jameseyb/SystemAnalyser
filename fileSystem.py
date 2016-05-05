@@ -20,13 +20,14 @@ versionCheck()
 
 #inputName = input("Enter name of folder to search for: ")
 
-searchPath = "C:\\Drop_Zone\\Projects\\SystemAnalyser"
+searchPath = "C:\\Drop_Zone\\Projects\\Test"
 
 try:
-	for path, dirs, files in os.walk(searchPath, topdown=True):
-		for files in os.walk(path, topdown=True):
-			str(searchRes) = re.search(r'citrix', files)
-			if searchRes:
-				print(searchRes)
+	for root, dirs, files in os.walk(searchPath, topdown=True):
+		for files in os.walk(root, topdown=True):
+			print(files)
+			#searchRes = re.search(r'citrix', files, re.M|re.I)
+			#if searchRes:
+			#	print(searchRes)
 except WindowsError as e:
 	print("Error")
