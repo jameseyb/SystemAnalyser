@@ -18,16 +18,19 @@ versionCheck()
 
 #Script main body here
 
-#inputName = input("Enter name of folder to search for: ")
-
-searchPath = "C:\\Drop_Zone\\Projects\\Test"
+searchString = input("Enter string to search for: ")
 
 try:
-	for root, dirs, files in os.walk(searchPath, topdown=True):
-		for files in os.walk(root, topdown=True):
-			print(files)
-			#searchRes = re.search(r'citrix', files, re.M|re.I)
-			#if searchRes:
-			#	print(searchRes)
+	for root, dirs, files in os.walk("\\", topdown=True):
+		for name in dirs:
+			searchObj = re.search(searchString, name, re.M|re.I)
+		if searchObj:
+			print(os.path.join(root, name))
+		for name in files:
+			searchObj = re.search(searchString, name, re.M|re.I)
+		if searchObj:
+			print(os.path.join(root, name))
+		#else:
+		#	print("No match for ",searchString)
 except WindowsError as e:
-	print("Error")
+	print(e)
